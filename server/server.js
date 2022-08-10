@@ -75,21 +75,24 @@ const server = http.createServer(app);
 
 const socketServer = io(server, {
   cors: {
-    origin: "*",
+    origin: "http://localhost:3000",
   }
 });
+
 
 app.get('/', function(req, res) {
   res.sendFile(__dirname + '/index.html');
 });
 
 socketServer.on('connection', (socket) => {
+  console.log('Conneted')
+  socket.emit('horse_status', horses);
   socket.on('start', () => {
     horses.map(horse => horse.distance = 0);
     trackTickers(socket);
   });
 });
-
+ 
 server.listen(PORT, () => {
   console.log(`Streaming service is running on http://localhost:${PORT}`);
 });

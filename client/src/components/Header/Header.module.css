@@ -1,0 +1,11 @@
+.header{ 
+    margin: 0 auto;
+    grid-area: h;
+    height: 60px;
+    background-color: gray;
+    text-align: center;
+}
+.text{
+    font-size: 30px;
+    padding-top: 10px;
+}
